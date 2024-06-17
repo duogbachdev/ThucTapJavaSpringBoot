@@ -1,0 +1,12 @@
+    @Operation(summary = "summary", description = "description", responses = {
+            @ApiResponse(responseCode = "202", description = "User updated successfully", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE,
+                    examples = @ExampleObject(name = "ex name", summary = "ex summary",
+                            value = """
+                                                {
+                                                    "status": 202,
+                                                    "message": "User updated successfully",
+                                                    "data": null
+                                                }
+                                                """
+                    )))
+    })
