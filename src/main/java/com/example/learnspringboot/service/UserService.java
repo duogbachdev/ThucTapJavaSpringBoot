@@ -22,4 +22,6 @@ public interface UserService {
 
     PageResponse<?> getAllUsersWithSortByMultipleColumns(int pageNo, int pageSize, String... sortBy);
 
+    PageResponse<?> getAllUsersWithSortByComlumnAndSearch(int pageNo, int pageSize, String search, String sortBy);
+
 }

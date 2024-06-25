@@ -105,4 +105,10 @@ public class UserController {
     public ResponseData<?> getAllUsersWithSortByMultipleColumns(@RequestParam(required = false) String email, @RequestParam(defaultValue = "0", required = false) int pageNo, @Min(10) @RequestParam(defaultValue = "10", required = false) int pageSize, @RequestParam(required = false) String... sort) {
         return new ResponseData<>(HttpStatus.OK.value(), "User", userService.getAllUsersWithSortByMultipleColumns(pageNo, pageSize, sort));
     }
+
+    @Operation(summary = "Get list of users per pageNo", description = "Send a request via this API to get user list by pageNo and pageSize")
+    @GetMapping("/detail/list-detail-search")
+    public ResponseData<?> getAllUsersWithSortByComlumnAndSearch(@RequestParam(required = false) String email, @RequestParam(defaultValue = "0", required = false) int pageNo, @RequestParam(defaultValue = "10", required = false) int pageSize, @RequestParam(required = false) String search, @RequestParam(required = false) String sortBy) {
+        return new ResponseData<>(HttpStatus.OK.value(), "User", userService.getAllUsersWithSortByComlumnAndSearch(pageNo, pageSize, search, sortBy));
+    }
 }

@@ -7,6 +7,7 @@ import com.example.learnspringboot.dto.response.PageResponse;
 import com.example.learnspringboot.dto.response.UserDetailResponse;
 import com.example.learnspringboot.model.Address;
 import com.example.learnspringboot.model.User;
+import com.example.learnspringboot.repository.SearchRepository;
 import com.example.learnspringboot.repository.UserRepository;
 import com.example.learnspringboot.service.UserService;
 import com.example.learnspringboot.utils.UserStatus;
@@ -32,6 +33,7 @@ import java.util.regex.Pattern;
 @RequiredArgsConstructor
 public class UserServiceIml implements UserService {
     private final UserRepository userRepository;
+    private final SearchRepository searchRepository;
 
     @Override
     public long createUser(UserRequestDTO request) {
@@ -196,6 +198,11 @@ public class UserServiceIml implements UserService {
                 .totalPage(users.getTotalPages())
                 .items(responses)
                 .build();
+    }
+
+    @Override
+    public PageResponse<?> getAllUsersWithSortByComlumnAndSearch(int pageNo, int pageSize, String search, String sortBy) {
+        return searchRepository.getAllUsersWithSortByComlumnAndSearch(pageNo, pageSize, search, sortBy);
     }
 
     private Set<Address> convertToAddress(Set<AddressDTO> addresses) {
